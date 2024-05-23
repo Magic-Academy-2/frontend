@@ -7,7 +7,6 @@
         "start": "webpack serve --mode development --open",
         "build": "webpack build --mode production"
     },
-    "dependencies": {},
     "devDependencies": {
         "@babel/core": "^7.0.0",
         "@babel/preset-env": "^7.0.0",
@@ -17,6 +16,7 @@
         "html-loader": "^4.0.0",
         "html-webpack-plugin": "^5.0.0",
         "mini-css-extract-plugin": "^2.9.0",
+        "prettier": "3.2.5",
         "style-loader": "^3.0.0",
         "webpack": "^5.0.0",
         "webpack-cli": "^4.0.0",

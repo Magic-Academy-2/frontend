@@ -32,6 +32,9 @@ importers:
       mini-css-extract-plugin:
         specifier: ^2.9.0
         version: 2.9.0(webpack@5.91.0(webpack-cli@4.10.0))
+      prettier:
+        specifier: 3.2.5
+        version: 3.2.5
       style-loader:
         specifier: ^3.0.0
         version: 3.3.4(webpack@5.91.0(webpack-cli@4.10.0))
@@ -1772,6 +1775,11 @@ packages:
   postcss@8.4.38:
     resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
     engines: {node: ^10 || ^12 || >=14}
+
+  prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   pretty-error@4.0.0:
     resolution: {integrity: sha512-AoJ5YMAcXKYxKhuJGdcvse+Voc6v1RgnsR3nWcYU7q4t6z0Q6T86sv5Zq8VIRbOWWFpvdGE83LtdSMNd+6Y0xw==}
@@ -4084,6 +4092,8 @@ snapshots:
       nanoid: 3.3.7
       picocolors: 1.0.1
       source-map-js: 1.2.0
+
+  prettier@3.2.5: {}
 
   pretty-error@4.0.0:
     dependencies:
