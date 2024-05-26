@@ -2,8 +2,6 @@ import { navigateTo } from '../../../Router';
 import styles from './root.css';
 
 export function RootScene() {
-  const root = document.getElementById('root');
-
   const header = `
         <header class="${styles.header}">
             <div>
@@ -21,18 +19,17 @@ export function RootScene() {
         </header>
     `;
 
-  const hero = `
-        <img />
-    `;
-
-  root.innerHTML = `
+  const html = `
         ${header}
     `;
 
   // logic
 
-  const button = document.getElementById('btn-login');
-  button.addEventListener('click', () => {
-    navigateTo('/login');
-  });
+  const logic = () => {
+    const button = document.getElementById('btn-login');
+    button.addEventListener('click', () => {
+      navigateTo('/login');
+    });
+  };
+  return { html, logic };
 }

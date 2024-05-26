@@ -44,8 +44,7 @@ export async function Router() {
   // Mostrar en /login en el caso de que no este autenticado
   const token = localStorage.getItem('token');
   const [isTokenValid] = await verifyToken(token);
-  if ((path === '/login' || path === '/') && isTokenValid)
-    return navigateTo('/home');
+  if (path === '/login' && isTokenValid) return navigateTo('/home');
 
   // Comprobar rutas públicas y privadas
   const publicRoute = routes.public.find((r) => r.path === path);
