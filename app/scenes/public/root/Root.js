@@ -1,5 +1,5 @@
 import { navigateTo } from '../../../Router';
-import styles from './root.css';
+import styles from './Root.css';
 
 export function RootScene() {
   const header = `

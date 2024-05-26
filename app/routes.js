@@ -1,6 +1,6 @@
 import { HomeScene } from './scenes/private/home';
 
-import { RootScene } from './scenes/public/root/root';
+import { RootScene } from './scenes/public/root';
 import { LoginScene } from './scenes/public/login';
 import { RegisterScene } from './scenes/public/register';
 
