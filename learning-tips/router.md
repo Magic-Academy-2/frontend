@@ -5,48 +5,38 @@
 El router es una herramienta que nos permite navegar entre diferentes vistas de nuestra aplicación. En este caso, vamos a analizar como funciona el Router.js creado por su team leader.
 
 ```javascript
-
 import { routes } from './helpers/routes';
-
 ```
 
 Importamos el objeto `routes` que contiene las rutas de nuestra aplicación.
 
 ```javascript
-
 import { LoginPage } from '../scenes/public/login';
 import { HomeScene } from '../scenes/private/home';
 import { ReportScene } from '../scenes/private/reports';
 
-
 export const routes = {
-    private: [
-        { path: '/dashboard', component: HomeScene },
-        { path: '/dashboard/reports', component: ReportScene },
-    ],
-    public: [
-        { path: '/login', component: LoginPage }
-    ]
+  private: [
+    { path: '/dashboard', component: HomeScene },
+    { path: '/dashboard/reports', component: ReportScene },
+  ],
+  public: [{ path: '/login', component: LoginPage }],
 };
-
 ```
 
-Esto, con la intención de que el router pueda acceder a las vistas de nuestra aplicación, las cuales están organizadas en dos grupos: `private` y `public` y cada uno de estos grupos contiene un array de rutas con su respectivo componente  del cual se hablara mas en profundidad en el archivo [components.md](components.md)
+Esto, con la intención de que el router pueda acceder a las vistas de nuestra aplicación, las cuales están organizadas en dos grupos: `private` y `public` y cada uno de estos grupos contiene un array de rutas con su respectivo componente del cual se hablara mas en profundidad en el archivo [components.md](components.md)
 
 Lo que espero de ti hasta ahora, es que puedas descargar este repositorio como base para tu proyecto y mientras llegas a este punto, puedas crear tus propias rutas y componentes publicos o privados según lo requiera tu aplicación.
 
 Bueno, continuemos con nuestro archivo Router.js
 
 ```javascript
-
 const API_URL = 'http://localhost:4000/api/auth/verify-token';
-
 ```
 
 Simplemente sera nuestra URL base para verificar el token del usuario.
 
 ```javascript
-
 // Verificar token con la API
 async function verifyToken(token) {
   try {
@@ -54,8 +44,8 @@ async function verifyToken(token) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (!response.ok) {
@@ -70,7 +60,6 @@ async function verifyToken(token) {
     return [false, { message: error.message }];
   }
 }
-
 ```
 
 Esta funciona, no necesariamente tiene que ser parte del Router, pero es una buena practica tenerla aquí, ya que es una función que se encarga de verificar el token del usuario, la cual es llamada en el archivo [App.js](app.md)
@@ -78,19 +67,16 @@ Esta funciona, no necesariamente tiene que ser parte del Router, pero es una bue
 Aunque su autor, prefiere separar las responsabilidades, en una futura sesión de code review, podríamos sugerirle que esta función sea parte de un archivo `auth.js` o `api.js` para mantener la organización del código.
 
 ```javascript
-
 // Navegar a una nueva ruta
 export function navigateTo(path) {
   window.history.pushState({}, '', window.location.origin + path);
   Router();
 }
-
 ```
 
 Esta función se encarga de navegar a una nueva ruta, simplemente recibe la ruta a la cual queremos navegar y hace uso de `window.history.pushState` para cambiar la URL del navegador y luego llama a la función `Router` que se encarga de renderizar la vista correspondiente.
 
 ```javascript
-
 // Verificar la autenticación y redirigir
 async function checkAuth(path) {
   const token = localStorage.getItem('token');
@@ -121,7 +107,6 @@ async function checkAuth(path) {
     navigateTo('/login');
   }
 }
-
 ```
 
 Uh! Parece una funcion bastante larga, pero no te preocupes, vamos a analizarla paso a paso.
@@ -141,7 +126,6 @@ Uh! Parece una funcion bastante larga, pero no te preocupes, vamos a analizarla 
 - 7. Si no hay token, redirigimos al usuario al login.
 
 ```javascript
-
 // Definir y manejar el router
 export async function Router() {
   const path = window.location.pathname;
@@ -172,7 +156,6 @@ export async function Router() {
     navigateTo('/login');
   }
 }
-
 ```
 
 Finalmente, tenemos la función `Router` que se encarga de manejar el router de nuestra aplicación. Entendamos paso a paso lo que hace:

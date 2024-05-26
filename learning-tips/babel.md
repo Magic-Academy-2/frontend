@@ -51,7 +51,6 @@ npm install --save-dev @babel/preset-env @babel/preset-react babel-loader
 Una vez instalados los paquetes, podemos configurar Babel en nuestro archivo de configuración de Webpack (`webpack.config.js`). Por ejemplo, si queremos utilizar Babel para transformar código de ES6 a ES5, podemos configurar Webpack de la siguiente manera:
 
 ```javascript
-
 module.exports = {
   module: {
     rules: [
@@ -61,12 +60,12 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
-  }
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 };
 ```
 
@@ -101,12 +100,12 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-class-properties']
-          }
-        }
-      }
-    ]
-  }
+            plugins: ['@babel/plugin-proposal-class-properties'],
+          },
+        },
+      },
+    ],
+  },
 };
 ```
 

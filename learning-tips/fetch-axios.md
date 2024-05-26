@@ -9,7 +9,7 @@ XMLHttpRequest (XHR) es un objeto que proporciona funcionalidades para realizar 
 ```javascript
 const xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://api.example.com/data', true);
-xhr.onreadystatechange = function() {
+xhr.onreadystatechange = function () {
   if (xhr.readyState === 4 && xhr.status === 200) {
     var data = JSON.parse(xhr.responseText);
     console.log(data);
@@ -26,9 +26,9 @@ jQuery.ajax es un método de la librería jQuery que simplifica la realización 
 $.ajax({
   url: 'https://api.example.com/data',
   method: 'GET',
-  success: function(data) {
+  success: function (data) {
     console.log(data);
-  }
+  },
 });
 ```
 
@@ -37,11 +37,9 @@ $.ajax({
 Superagent es una librería de cliente HTTP para Node.js y los navegadores que proporciona una API similar a jQuery.ajax pero con algunas mejoras. Es una librería muy popular y fácil de usar. Aquí tienes un ejemplo de cómo hacer una petición GET con Superagent:
 
 ```javascript
-superagent
-  .get('https://api.example.com/data')
-  .end(function(err, res) {
-    console.log(res.body);
-  });
+superagent.get('https://api.example.com/data').end(function (err, res) {
+  console.log(res.body);
+});
 ```
 
 ## Request
@@ -49,10 +47,9 @@ superagent
 Request es una librería de cliente HTTP para Node.js que proporciona una API similar a Superagent pero con algunas diferencias. Es una librería muy potente y flexible que se puede utilizar para hacer todo tipo de peticiones HTTP. Aquí tienes un ejemplo de cómo hacer una petición GET con Request:
 
 ```javascript
-
 const request = require('request');
 
-request('https://api.example.com/data', function(err, res, body) {
+request('https://api.example.com/data', function (err, res, body) {
   console.log(JSON.parse(body));
 });
 ```
@@ -62,10 +59,9 @@ request('https://api.example.com/data', function(err, res, body) {
 Got es una librería de cliente HTTP para Node.js que proporciona una API similar a Request pero con algunas mejoras. Es una librería muy ligera y rápida que se puede utilizar para hacer peticiones HTTP de forma sencilla. Aquí tienes un ejemplo de cómo hacer una petición GET con Got:
 
 ```javascript
-
 const got = require('got');
 
-got('https://api.example.com/data').then(response => {
+got('https://api.example.com/data').then((response) => {
   console.log(response.body);
 });
 ```
@@ -75,8 +71,7 @@ got('https://api.example.com/data').then(response => {
 Axios es una librería de cliente HTTP para Node.js y los navegadores que proporciona una API similar a Superagent pero con algunas mejoras. Es una librería muy popular y fácil de usar que se puede utilizar para hacer peticiones HTTP de forma sencilla. Aquí tienes un ejemplo de cómo hacer una petición GET con Axios:
 
 ```javascript
-
-axios.get('https://api.example.com/data').then(response => {
+axios.get('https://api.example.com/data').then((response) => {
   console.log(response.data);
 });
 ```
@@ -86,10 +81,9 @@ axios.get('https://api.example.com/data').then(response => {
 Fetch API es una API nativa de JavaScript que proporciona una forma moderna y potente de hacer peticiones HTTP en el navegador. Es compatible con todos los navegadores modernos y es la forma recomendada de hacer peticiones HTTP en JavaScript. Aquí tienes un ejemplo de cómo hacer una petición GET con Fetch API:
 
 ```javascript
-
 fetch('https://api.example.com/data')
-  .then(response => response.json())
-  .then(data => console.log(data));
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 ```
 
 ## Conclusión

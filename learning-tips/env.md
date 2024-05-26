@@ -34,4 +34,4 @@ Y luego cargar las variables de entorno en la aplicación de la siguiente manera
 require('dotenv').config();
 ```
 
-Nota* Esto no aplica para el navegador, ya que las variables de entorno son específicas de cada entorno de ejecución y no están disponibles en el navegador. Sin embargo, se pueden utilizar otras formas de configuración, como variables globales o almacenamiento local, para lograr un comportamiento similar en una aplicación web.
+Nota\* Esto no aplica para el navegador, ya que las variables de entorno son específicas de cada entorno de ejecución y no están disponibles en el navegador. Sin embargo, se pueden utilizar otras formas de configuración, como variables globales o almacenamiento local, para lograr un comportamiento similar en una aplicación web.

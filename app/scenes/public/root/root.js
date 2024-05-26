@@ -1,10 +1,10 @@
-import { navigateTo } from "../../../Router";
-import styles from './root.css'
+import { navigateTo } from '../../../Router';
+import styles from './root.css';
 
-export function RootScene () {
-    const root = document.getElementById('root');
+export function RootScene() {
+  const root = document.getElementById('root');
 
-    const header = `
+  const header = `
         <header class="${styles.header}">
             <div>
                 <img src=""/>
@@ -21,19 +21,18 @@ export function RootScene () {
         </header>
     `;
 
-    const hero = `
+  const hero = `
         <img />
     `;
-    
-    root.innerHTML = `
+
+  root.innerHTML = `
         ${header}
     `;
 
-    // logic
+  // logic
 
-    const button = document.getElementById('btn-login');
-    button.addEventListener('click', () => {
-        navigateTo('/login');
-    });
-
+  const button = document.getElementById('btn-login');
+  button.addEventListener('click', () => {
+    navigateTo('/login');
+  });
 }

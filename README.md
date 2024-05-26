@@ -1,3 +1,3 @@
 # Magic Academy
-## Descripción
 
+## Descripción

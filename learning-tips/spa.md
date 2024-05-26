@@ -25,51 +25,51 @@ En resumen, las aplicaciones de página única son una excelente opción para cr
 A continuación, se muestra un ejemplo básico de una SPA utilizando HTML, CSS y JavaScript:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SPA Example</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-        main {
-            padding: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+      main {
+        padding: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Single Page Application</h1>
+      <h1>Single Page Application</h1>
     </header>
     <main>
-        <p>Welcome to our SPA! Click the button below to load some content.</p>
-        <button id="loadContent">Load Content</button>
-        <div id="content"></div>
+      <p>Welcome to our SPA! Click the button below to load some content.</p>
+      <button id="loadContent">Load Content</button>
+      <div id="content"></div>
     </main>
     <script>
-        const loadContentButton = document.getElementById('loadContent');
-        const contentDiv = document.getElementById('content');
+      const loadContentButton = document.getElementById('loadContent');
+      const contentDiv = document.getElementById('content');
 
-        loadContentButton.addEventListener('click', () => {
-            contentDiv.innerHTML = '<p>This is some dynamic content loaded via JavaScript!</p>';
-        });
+      loadContentButton.addEventListener('click', () => {
+        contentDiv.innerHTML =
+          '<p>This is some dynamic content loaded via JavaScript!</p>';
+      });
     </script>
-</body>
+  </body>
 </html>
 ```
 
 En este ejemplo, al hacer clic en el botón "Load Content", se carga dinámicamente contenido en la página sin necesidad de recargarla por completo. Esto es un ejemplo simple de cómo funcionan las SPAs y cómo se pueden crear utilizando tecnologías web básicas.
 
 A continuación te dejo las notas de la clase de [SPA](https://excalidraw.com/product#json=8wcQW6H4iwrXJ7Azq5_UF,-o_cofHcLJ-8DQKbvIU6xA)
-

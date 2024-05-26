@@ -12,7 +12,6 @@ Los Web Components son un conjunto de tecnologías que permiten la creación de 
 Los Custom Elements permiten definir elementos HTML personalizados con su propio comportamiento y estilo. Para crear un Custom Element, se debe extender la clase `HTMLElement` y registrar el nuevo elemento con el método `customElements.define()`.
 
 ```javascript
-
 class MyElement extends HTMLElement {
   constructor() {
     super();
@@ -38,7 +37,7 @@ class MyElement extends HTMLElement {
         <h1>Hello, World!</h1>
       </div>
     `;
-    
+
     // Insertar el contenido del fragmento en el elemento custom
     template.appendChild(container);
     this.appendChild(template);
@@ -51,12 +50,11 @@ customElements.define('my-element', MyElement);
 O para los que prefieren prototypos:
 
 ```javascript
-
 // Crear un nuevo objeto que hereda de HTMLElement
 const MyElement = Object.create(HTMLElement.prototype);
 
 // Definir el constructor
-MyElement.createdCallback = function() {
+MyElement.createdCallback = function () {
   // Crear un fragmento de HTML para encapsular el contenido del elemento
   const template = document.createDocumentFragment();
   const container = document.createElement('div');
@@ -77,7 +75,7 @@ MyElement.createdCallback = function() {
       <h1>Hello, World!</h1>
     </div>
   `;
-  
+
   // Insertar el contenido del fragmento en el elemento custom
   template.appendChild(container);
   this.appendChild(template);
@@ -85,7 +83,7 @@ MyElement.createdCallback = function() {
 
 // Registrar el nuevo elemento
 document.registerElement('my-element', {
-  prototype: MyElement
+  prototype: MyElement,
 });
 ```
 
@@ -98,12 +96,10 @@ De modo que podemos llamar a nuestro elemento en el HTML de la siguiente manera:
 O en otros archivos js:
 
 ```javascript
-
 import './my-element.js';
 
 const myElement = document.createElement('div');
 myElement.innerHTML = '<my-element></my-element>';
-
 ```
 
 ## Shadow DOM
@@ -113,7 +109,6 @@ El Shadow DOM proporciona un ámbito de encapsulación para los estilos y el com
 Para crear un Shadow DOM, se debe utilizar el método `attachShadow()` en el constructor del Custom Element.
 
 ```javascript
-
 class MyElement extends HTMLElement {
   constructor() {
     super();
@@ -138,7 +133,7 @@ class MyElement extends HTMLElement {
         <h1>Hello, World!</h1>
       </div>
     `;
-    
+
     // Insertar el contenido en el Shadow DOM
     shadowRoot.appendChild(container);
   }
@@ -150,12 +145,11 @@ customElements.define('my-element', MyElement);
 O para los que prefieren prototypos:
 
 ```javascript
-
 // Crear un nuevo objeto que hereda de HTMLElement
 const MyElement = Object.create(HTMLElement.prototype);
 
 // Definir el constructor
-MyElement.createdCallback = function() {
+MyElement.createdCallback = function () {
   // Crear un Shadow DOM para encapsular el contenido del elemento
   const shadowRoot = this.createShadowRoot();
   const container = document.createElement('div');
@@ -176,14 +170,14 @@ MyElement.createdCallback = function() {
       <h1>Hello, World!</h1>
     </div>
   `;
-  
+
   // Insertar el contenido en el Shadow DOM
   shadowRoot.appendChild(container);
 };
 
 // Registrar el nuevo elemento
 document.registerElement('my-element', {
-  prototype: MyElement
+  prototype: MyElement,
 });
 ```
 
@@ -192,7 +186,6 @@ document.registerElement('my-element', {
 Los HTML Templates permiten definir fragmentos de código HTML que se pueden clonar y reutilizar en un componente. Se pueden utilizar para definir la estructura de un componente y clonarla dinámicamente en el Shadow DOM.
 
 ```javascript
-
 class MyElement extends HTMLElement {
   constructor() {
     super();
@@ -217,7 +210,7 @@ class MyElement extends HTMLElement {
         <h1>Hello, World!</h1>
       </div>
     `;
-    
+
     // Clonar el contenido del template en el Shadow DOM
     shadowRoot.appendChild(template.content.cloneNode(true));
   }
@@ -237,18 +230,16 @@ Entedamos como es esto de diferente a lo anterior:
 Los HTML Imports permiten importar y reutilizar componentes en diferentes archivos HTML. Se pueden utilizar para importar los estilos y scripts necesarios para un componente y reutilizarlos en diferentes páginas web.
 
 ```html
-<link rel="import" href="my-element.html">
+<link rel="import" href="my-element.html" />
 ```
 
 O en JavaScript:
 
 ```javascript
-
 const link = document.createElement('link');
 link.rel = 'import';
 link.href = 'my-element.html';
 document.head.appendChild(link);
-
 ```
 
 De que se trata esto anterior:

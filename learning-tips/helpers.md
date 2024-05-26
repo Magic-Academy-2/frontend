@@ -9,8 +9,8 @@ Para crear un helper en JavaScript, simplemente se define una función que reali
 ```javascript
 // Helper para formatear fechas
 export function formatDate(date) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(date).toLocaleDateString("es-ES", options);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(date).toLocaleDateString('es-ES', options);
 }
 ```
 
@@ -21,9 +21,9 @@ En este ejemplo, la función `formatDate` recibe una fecha y la formatea en form
 Para utilizar un helper en otro módulo, simplemente se importa la función del helper y se llama en el código donde se necesite. Por ejemplo, si queremos utilizar el helper `formatDate` en un componente de nuestra app, podemos importarlo de la siguiente manera:
 
 ```javascript
-import { formatDate } from "./helpers/dateHelper.js";
+import { formatDate } from './helpers/dateHelper.js';
 
-const date = "2024-01-01";
+const date = '2024-01-01';
 const formattedDate = formatDate(date);
 console.log(formattedDate); // Output: "sábado, 1 de enero de 2024"
 ```
@@ -37,8 +37,8 @@ En este ejemplo, importamos la función `formatDate` del helper `dateHelper.js` 
 ```javascript
 // Helper para formatear fechas
 export function formatDate(date) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(date).toLocaleDateString("es-ES", options);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(date).toLocaleDateString('es-ES', options);
 }
 ```
 
@@ -50,7 +50,7 @@ Como vimos en el ejemplo anterior, este helper recibe una fecha y la formatea en
 // Helper para manejar errores
 export function handleError(error) {
   console.error(error);
-  alert("Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.");
+  alert('Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.');
 }
 ```
 
@@ -63,13 +63,12 @@ En la capa de servicios, es donde se manejan las peticiones HTTP, por lo que es 
 Veamos un ejemplo de como se puede utilizar este helper en un archivo de servicios (entiendase por servicios a las funciones que realizan peticiones HTTP, las cuales por lo general aislamos en archivos separados):
 
 ```javascript
-
 // services/dataService.js
-import { handleError } from "./helpers/errorHelper.js";
+import { handleError } from './helpers/errorHelper.js';
 
 export async function fetchData() {
   try {
-    const response = await fetch("https://api.example.com/data");
+    const response = await fetch('https://api.example.com/data');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -83,7 +82,6 @@ En este ejemplo, la funcion `fetchData` realiza una peticion HTTP a una API y ma
 3. Helper para realizar peticiones HTTP
 
 ```javascript
-
 // Helper para realizar peticiones HTTP
 export async function fetchApi(url, options) {
   try {
@@ -101,16 +99,15 @@ Yo se! Se parece mucho a la funcion `fetchData` que acabamos de ver, pero la dif
 Veamos un ejemplo de como se puede utilizar este helper en un archivo de servicios:
 
 ```javascript
-
 // services/dataService.js
-import { fetchApi } from "./helpers/httpHelper.js";
+import { fetchApi } from './helpers/httpHelper.js';
 
 export async function fetchData() {
-  const url = "https://api.example.com/data";
+  const url = 'https://api.example.com/data';
   const options = {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
 
@@ -123,19 +120,18 @@ En este ejemplo, la funcion `fetchData` utiliza el helper `fetchApi` para realiz
 4. Helper para validar formularios
 
 ```javascript
-
 // Helper para validar formularios
 export function validateForm(formData) {
   const errors = {};
 
   if (!formData.name) {
-    errors.name = "El nombre es obligatorio";
+    errors.name = 'El nombre es obligatorio';
   }
 
   if (!formData.email) {
-    errors.email = "El correo electrónico es obligatorio";
+    errors.email = 'El correo electrónico es obligatorio';
   } else if (!isValidEmail(formData.email)) {
-    errors.email = "El correo electrónico no es válido";
+    errors.email = 'El correo electrónico no es válido';
   }
 
   return errors;
@@ -152,45 +148,43 @@ Este helper recibe un objeto `formData` con los datos de un formulario y valida 
 Veamos un ejemplo de como se puede utilizar este helper en un custom web component de nuestra SPA:
 
 ```javascript
-
 // components/formComponent.js
-import { validateForm } from "./helpers/formHelper.js";
+import { validateForm } from './helpers/formHelper.js';
 
 export const ContactFormComponent = () => {
-    const root = document.getElementById("root");
-    const form = document.createElement("form");
+  const root = document.getElementById('root');
+  const form = document.createElement('form');
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const formData = {
-            name: form.name.value,
-            email: form.email.value,
-        };
-        const errors = validateForm(formData);
-        if (Object.keys(errors).length === 0) {
-            // Enviar datos del formulario
-        } else {
-            // Mostrar mensajes de error
-        }
-    });
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+    };
+    const errors = validateForm(formData);
+    if (Object.keys(errors).length === 0) {
+      // Enviar datos del formulario
+    } else {
+      // Mostrar mensajes de error
+    }
+  });
 
-    form.innerHTML = `
+  form.innerHTML = `
         <input type="text" name="name" placeholder="Nombre">
         <input type="email" name="email" placeholder="Correo electrónico">
         <button type="submit">Enviar</button>
     `;
 
-    root.appendChild(form);
-}
+  root.appendChild(form);
+};
 ```
 
 5. Helper para formatear números
 
 ```javascript
-
 // Helper para formatear números
 export function formatNumber(number) {
-  return new Intl.NumberFormat("es-ES").format(number);
+  return new Intl.NumberFormat('es-ES').format(number);
 }
 ```
 
@@ -200,12 +194,11 @@ Intl es un objeto incorporado en JavaScript que proporciona soporte para formate
 6. Helper para formatear moneda
 
 ```javascript
-
 // Helper para formatear moneda
 
 export function formatCurrency(amount, currency) {
-  return new Intl.NumberFormat("es-ES", {
-    style: "currency",
+  return new Intl.NumberFormat('es-ES', {
+    style: 'currency',
     currency: currency,
   }).format(amount);
 }
@@ -216,11 +209,10 @@ Este helper recibe un monto y una moneda y lo formatea con el formato de moneda 
 7. Helper para generar códigos aleatorios
 
 ```javascript
-
 // Helper para generar códigos aleatorios
 export function generateRandomCode(length) {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let code = "";
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let code = '';
 
   for (let i = 0; i < length; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length);
@@ -236,14 +228,13 @@ Este helper recibe una longitud y genera un código aleatorio con los caracteres
 8. Helper para copiar texto al portapapeles
 
 ```javascript
-
 // Helper para copiar texto al portapapeles
 export function copyToClipboard(text) {
-  const textarea = document.createElement("textarea");
+  const textarea = document.createElement('textarea');
   textarea.value = text;
   document.body.appendChild(textarea);
   textarea.select();
-  document.execCommand("copy");
+  document.execCommand('copy');
   document.body.removeChild(textarea);
 }
 ```
@@ -253,7 +244,6 @@ Este helper recibe un texto y lo copia al portapapeles del usuario. Para ello, c
 9. Helper para obtener la edad a partir de una fecha de nacimiento
 
 ```javascript
-
 // Helper para obtener la edad a partir de una fecha de nacimiento
 
 export function getAge(birthDate) {
@@ -275,12 +265,11 @@ Este helper recibe una fecha de nacimiento y calcula la edad actual en base a la
 10. Helper para ordenar una lista de objetos por una propiedad
 
 ```javascript
-
 // Helper para ordenar una lista de objetos por una propiedad
 
-export function sortByProperty(list, property, order = "asc") {
+export function sortByProperty(list, property, order = 'asc') {
   return list.sort((a, b) => {
-    if (order === "asc") {
+    if (order === 'asc') {
       return a[property] > b[property] ? 1 : -1;
     } else {
       return a[property] < b[property] ? 1 : -1;
@@ -294,7 +283,6 @@ Este helper recibe una lista de objetos, una propiedad y un orden (`asc` o `desc
 11. Helper para filtrar una lista de objetos por una propiedad
 
 ```javascript
-
 // Helper para filtrar una lista de objetos por una propiedad
 
 export function filterByProperty(list, property, value) {
@@ -307,7 +295,6 @@ Este helper recibe una lista de objetos, una propiedad y un valor, y filtra la l
 12. Helper para paginar una lista de objetos
 
 ```javascript
-
 // Helper para paginar una lista de objetos
 
 export function paginateList(list, page, pageSize) {
@@ -322,36 +309,35 @@ Este helper recibe una lista de objetos, un número de página y un tamaño de p
 Veamos un ejemplo real de paginacion en una aplicacion SPA:
 
 ```javascript
-
 // components/paginationComponent.js
-import { paginateList } from "./helpers/paginationHelper.js";
+import { paginateList } from './helpers/paginationHelper.js';
 
 export const PaginationComponent = (list, pageSize) => {
-    const root = document.getElementById("root");
-    let currentPage = 1;
+  const root = document.getElementById('root');
+  let currentPage = 1;
 
-    const renderPage = () => {
-        const page = paginateList(list, currentPage, pageSize);
-        // Renderizar la pagina en el DOM
-    };
+  const renderPage = () => {
+    const page = paginateList(list, currentPage, pageSize);
+    // Renderizar la pagina en el DOM
+  };
 
-    const nextPage = () => {
-        currentPage++;
-        renderPage();
-    };
-
-    const prevPage = () => {
-        currentPage--;
-        renderPage();
-    };
-
+  const nextPage = () => {
+    currentPage++;
     renderPage();
+  };
 
-    return {
-        nextPage,
-        prevPage,
-    };
-}
+  const prevPage = () => {
+    currentPage--;
+    renderPage();
+  };
+
+  renderPage();
+
+  return {
+    nextPage,
+    prevPage,
+  };
+};
 ```
 
 En este ejemplo, el componente `PaginationComponent` recibe una lista de objetos y un tamaño de página, y renderiza la página actual en el DOM. Además, proporciona métodos para navegar a la página siguiente y anterior.
@@ -359,7 +345,6 @@ En este ejemplo, el componente `PaginationComponent` recibe una lista de objetos
 13. Helper para calcular el promedio de una lista de números
 
 ```javascript
-
 // Helper para calcular el promedio de una lista de números
 
 export function calculateAverage(numbers) {
@@ -373,14 +358,13 @@ Este helper recibe una lista de números y calcula el promedio de los mismos. Po
 14. Helper para convertir una cadena de texto a slug
 
 ```javascript
-
 // Helper para convertir una cadena de texto a slug
 
 export function textToSlug(text) {
   return text
     .toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/[^a-z0-9-]/g, "");
+    .replace(/ /g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 }
 ```
 
@@ -389,7 +373,6 @@ Este helper recibe una cadena de texto y la convierte en un slug, es decir, una 
 15. Helper para capitalizar una cadena de texto
 
 ```javascript
-
 // Helper para capitalizar una cadena de texto
 
 export function capitalizeText(text) {
@@ -402,7 +385,6 @@ Este helper recibe una cadena de texto y la capitaliza, es decir, pone la primer
 16. Helper para validar un número de teléfono
 
 ```javascript
-
 // Helper para validar un número de teléfono
 
 export function isValidPhoneNumber(phoneNumber) {
@@ -416,12 +398,15 @@ Este helper recibe un número de teléfono y valida que tenga un formato interna
 17. Helper para crear un snackbar global con transicion slide, fade o bounce
 
 ```javascript
-
 // Helper para crear un snackbar global con transicion slide, fade o bounce
 
-export function showSnackbar(message, type = "info", transition = "slide") {
-  const snackbar = document.createElement("div");
-  snackbar.classList.add("snackbar", `snackbar-${type}`, `snackbar-${transition}`);
+export function showSnackbar(message, type = 'info', transition = 'slide') {
+  const snackbar = document.createElement('div');
+  snackbar.classList.add(
+    'snackbar',
+    `snackbar-${type}`,
+    `snackbar-${transition}`,
+  );
   snackbar.textContent = message;
   document.body.appendChild(snackbar);
 
@@ -431,12 +416,11 @@ export function showSnackbar(message, type = "info", transition = "slide") {
 }
 ```
 
-Te preguntaras, ¿Que es un snackbar? Un snackbar es un componente de interfaz de usuario que se utiliza para mostrar mensajes breves al usuario, como confirmaciones, advertencias o errores. En este caso, el helper `showSnackbar` recibe un mensaje, un tipo (`info`, `success`, `warning`, `error`) y una transición (`slide`, `fade`, `bounce`) y crea un snackbar global en el cuerpo del documento con el mensaje y la apariencia especificados. Luego, elimina el snackbar después de 3 segundos. 
+Te preguntaras, ¿Que es un snackbar? Un snackbar es un componente de interfaz de usuario que se utiliza para mostrar mensajes breves al usuario, como confirmaciones, advertencias o errores. En este caso, el helper `showSnackbar` recibe un mensaje, un tipo (`info`, `success`, `warning`, `error`) y una transición (`slide`, `fade`, `bounce`) y crea un snackbar global en el cuerpo del documento con el mensaje y la apariencia especificados. Luego, elimina el snackbar después de 3 segundos.
 
 Y... en donde esta el CSS para los estilos del snackbar? Bueno, aqui te dejo un ejemplo de como podria ser:
 
 ```css
-
 /* styles/snackbar.css */
 
 .snackbar {
@@ -481,7 +465,8 @@ Y... en donde esta el CSS para los estilos del snackbar? Bueno, aqui te dejo un 
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -511,12 +496,11 @@ Y... en donde esta el CSS para los estilos del snackbar? Bueno, aqui te dejo un 
 18. Helper para obtener la hora actual en formato de 12 horas
 
 ```javascript
-
 // Helper para obtener la hora actual en formato de 12 horas
 
 export function getCurrentTime12Hours() {
-  const options = { hour: "numeric", minute: "numeric", hour12: true };
-  return new Date().toLocaleTimeString("es-ES", options);
+  const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+  return new Date().toLocaleTimeString('es-ES', options);
 }
 ```
 
@@ -525,12 +509,11 @@ Este helper obtiene la hora actual y la formatea en formato de 12 horas con minu
 19. Helper para obtener la hora actual en formato de 24 horas
 
 ```javascript
-
 // Helper para obtener la hora actual en formato de 24 horas
 
 export function getCurrentTime24Hours() {
-  const options = { hour: "numeric", minute: "numeric" };
-  return new Date().toLocaleTimeString("es-ES", options);
+  const options = { hour: 'numeric', minute: 'numeric' };
+  return new Date().toLocaleTimeString('es-ES', options);
 }
 ```
 
@@ -539,15 +522,14 @@ Este helper obtiene la hora actual y la formatea en formato de 24 horas con minu
 20. Helper para crear logs en una rchivo externo por cada peticion en el interceptor de una aplicacion SPA
 
 ```javascript
-
 // Helper para crear logs en un archivo externo por cada peticion en el interceptor de una aplicacion SPA
 
 export function createLog(log) {
-  const logFile = new Blob([log], { type: "text/plain" });
+  const logFile = new Blob([log], { type: 'text/plain' });
   const logURL = URL.createObjectURL(logFile);
-  const logLink = document.createElement("a");
+  const logLink = document.createElement('a');
   logLink.href = logURL;
-  logLink.download = "log.txt";
+  logLink.download = 'log.txt';
   logLink.click();
 }
 ```
@@ -557,22 +539,21 @@ Este helper recibe un log y crea un archivo de texto con el log en formato `text
 21. Helper para obtener la ubicacion actual del usuario
 
 ```javascript
-
 // Helper para obtener la ubicacion actual del usuario
 
 export function getCurrentLocation() {
   return new Promise((resolve, reject) => {
-    if ("geolocation" in navigator) {
+    if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           resolve(position.coords);
         },
         (error) => {
           reject(error);
-        }
+        },
       );
     } else {
-      reject(new Error("Geolocation is not available"));
+      reject(new Error('Geolocation is not available'));
     }
   });
 }
@@ -583,7 +564,6 @@ Este helper utiliza la API de geolocalización del navegador para obtener la ubi
 22. Helper para convertir una cadena de texto en formato JSON
 
 ```javascript
-
 // Helper para convertir una cadena de texto en formato JSON
 
 export function parseJSON(text) {
@@ -600,7 +580,6 @@ Este helper recibe una cadena de texto en formato JSON y la convierte en un obje
 23. Helper para convertir un objeto en formato JSON a una cadena de texto
 
 ```javascript
-
 // Helper para convertir un objeto en formato JSON a una cadena de texto
 
 export function stringifyJSON(object) {
@@ -613,12 +592,11 @@ Este helper recibe un objeto JavaScript y lo convierte en una cadena de texto en
 24. Helper para obtener el día de la semana a partir de una fecha
 
 ```javascript
-
 // Helper para obtener el día de la semana a partir de una fecha
 
 export function getDayOfWeek(date) {
-  const options = { weekday: "long" };
-  return new Date(date).toLocaleDateString("es-CO", options);
+  const options = { weekday: 'long' };
+  return new Date(date).toLocaleDateString('es-CO', options);
 }
 ```
 
@@ -627,16 +605,14 @@ Este helper recibe una fecha y devuelve el día de la semana correspondiente en 
 25. Helper para obtener el mes a partir de una fecha
 
 ```javascript
-
 // Helper para obtener el mes a partir de una fecha
 
 export function getMonth(date) {
-  const options = { month: "long" };
-  return new Date(date).toLocaleDateString("es-CO", options);
+  const options = { month: 'long' };
+  return new Date(date).toLocaleDateString('es-CO', options);
 }
 ```
 
 Este helper recibe una fecha y devuelve el mes correspondiente en formato largo. Por ejemplo, si se pasa la fecha `2024-01-01`, se devuelve `enero`.
 
 Estos son solo algunos ejemplos de helpers que puedes utilizar en tu aplicacion SPA para realizar tareas comunes de forma sencilla y reutilizable. Puedes crear tus propios helpers para adaptarlos a las necesidades específicas de tu aplicación y mejorar la eficiencia y mantenibilidad de tu código.
-
