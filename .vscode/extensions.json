@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "sainoba.px-to-rem",
+    "cipchk.cssrem",
+    "kisstkondoros.vscode-gutter-preview"
+  ]
+}
