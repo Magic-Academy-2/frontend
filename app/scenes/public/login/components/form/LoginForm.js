@@ -1,11 +1,9 @@
-import { navigateTo } from '../../../../../Router.js';
-import { formValidator } from '../../../../../helpers';
-import style from './login-form.css';
+import { navigateTo } from '../../../../../Router';
+import { formValidator } from '../../../../../helpers/form-validator';
+import style from './LoginForm.css';
 
-export async function LoginFormComponent() {
-  const root = document.getElementById('root');
-
-  root.innerHTML = `
+export function LoginForm() {
+  const html = `
       <form id="loginForm" class="${style.form}">
         <h2>Login</h2>
         <label for="email" class="${style.label}">Email:</label>
@@ -15,25 +13,29 @@ export async function LoginFormComponent() {
         <button type="submit" class="${style['button-send']}">Login</button>
       </form>
     `;
-  
-  const form = document.getElementById('loginForm');
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault(); // previene el comportamiento por default que es, recargar la pagina
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
 
-    if(!formValidator(email, password)){
-      alert('Please fill in all fields');
-      return;
-    }
-    const token = await login(email, password);
-    if (token) {
-      localStorage.setItem('token', token);
-      navigateTo('/dashboard');
-    } else {
-      alert('Invalid credentials');
-    }
-  });
+  const logic = () => {
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault(); // previene el comportamiento por default que es: enviar la peticion y recargar la pagina
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (!formValidator(email, password)) {
+        alert('Please fill in all fields');
+        return;
+      }
+      const token = await login(email, password);
+      if (token) {
+        localStorage.setItem('token', token);
+        navigateTo('/home');
+      } else {
+        alert('Invalid credentials');
+      }
+    });
+  };
+
+  return { html, logic };
 }
 
 async function login(email, password) {

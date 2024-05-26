@@ -1,11 +1,15 @@
+import { DashboardLayout } from './layouts/dashboard-layout/DashboardLayout';
+import { PublicLayout } from './layouts/public-layout/PublicLayout';
 import { routes } from './routes';
 
-const API_URL = 'http://localhost:4000/api/auth/verify-token';
+const API_URL = 'http://localhost:4000/api/auth';
 
 // Verificar token con la API
 async function verifyToken(token) {
+  // return [true, { message: 'Token verified' }];
+  if (!token) return [false, { message: 'No token provided' }];
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(`${API_URL}/verify-token`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +23,7 @@ async function verifyToken(token) {
     }
 
     const data = await response.json();
-    return [data.valid, data];
+    return [data.valid, { message: data.message }];
   } catch (error) {
     console.error('Token verification failed:', error);
     return [false, { message: error.message }];
@@ -32,66 +36,32 @@ export function navigateTo(path) {
   Router();
 }
 
-// Verificar la autenticación y redirigir
-async function checkAuth(path, params) {
-  const token = localStorage.getItem('token');
-
-  if (token) {
-    const [isValid] = await verifyToken(token);
-    if (isValid) {
-      // Redirigir al dashboard si se intenta acceder al login o a la raíz
-      if (path === '/login' || path === '/') {
-        navigateTo('/dashboard');
-        return;
-      }
-
-      // Ejecutar componente privado correspondiente
-      const privateRoute = routes.private.find((r) => r.path === path);
-      if (privateRoute) {
-        // hace la peticion al backend.
-        const { pageContent, logic } = privateRoute.component(params);
-        DashboardLayout(pageContent, logic);
-        return;
-      } else {
-        navigateTo('/dashboard'); // Redirigir a dashboard si la ruta privada no existe
-      }
-    } else {
-      // Token no válido, redirigir a login
-      navigateTo('/login');
-    }
-  } else {
-    // Si no hay token, redirigir a login
-    navigateTo('/login');
-  }
-}
-
 // Definir y manejar el router
 export async function Router() {
   const path = window.location.pathname;
-  const params = new URLSearchParams(window.location.search);
+  const searchParams = new URLSearchParams(window.location.search);
 
-  // Verificar autenticación antes de decidir qué componente mostrar
-  if (path === '/login') {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const [isValid] = await verifyToken(token);
-      if (isValid) {
-        navigateTo('/dashboard');
-        return;
-      }
-    }
-  }
+  // Mostrar en /login en el caso de que no este autenticado
+  const token = localStorage.getItem('token');
+  const [isTokenValid] = await verifyToken(token);
+  if ((path === '/login' || path === '/') && isTokenValid)
+    return navigateTo('/home');
 
   // Comprobar rutas públicas y privadas
   const publicRoute = routes.public.find((r) => r.path === path);
   const privateRoute = routes.private.find((r) => r.path === path);
 
   if (publicRoute) {
-    publicRoute.component(params);
-  } else if (privateRoute) {
-    checkAuth(path, params);
+    const { html, logic } = publicRoute.component({ searchParams });
+    PublicLayout({ mainHtml: html, mainContentLogic: logic });
+  } else if (privateRoute && isTokenValid) {
+    const { html, logic } = privateRoute.component({ searchParams });
+    DashboardLayout({ mainHtml: html, mainContentLogic: logic });
+  } else if (!publicRoute && !privateRoute) {
+    console.warn(`Ruta no encontrada: ${path}. Redirigiendo al /login`);
+    navigateTo('/login');
   } else {
-    console.warn('Ruta no encontrada:', path);
+    console.warn(`No existe token. Redirigiendo al /login`);
     navigateTo('/login');
   }
 }
