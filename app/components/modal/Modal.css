@@ -1,0 +1,24 @@
+.modal_window {
+  max-width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  padding: var(--spacing-2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btns_modal {
+  display: flex;
+  gap: var(--spacing-1);
+  margin-top: var(--spacing-2);
+}
+
+.modal_window::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.btn_modal:hover {
+  background-color: var(--clr-primary-400);
+  color: var(--clr-primary-700);
+}
