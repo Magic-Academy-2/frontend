@@ -3,6 +3,7 @@
     "esbenp.prettier-vscode",
     "sainoba.px-to-rem",
     "cipchk.cssrem",
-    "kisstkondoros.vscode-gutter-preview"
+    "kisstkondoros.vscode-gutter-preview",
+    "pushqrdx.inline-html"
   ]
 }
