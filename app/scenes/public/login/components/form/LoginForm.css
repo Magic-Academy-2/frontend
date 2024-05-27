@@ -1,35 +1,42 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.input_group {
+  margin-bottom: 15px;
+  width: 100%;
 }
 
-.label {
+.input_group label {
+  display: block;
   margin-bottom: 5px;
-  color: black;
 }
 
-.input-email,
-.input-password {
-  margin-bottom: 10px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.button-send {
+.input_group input {
+  width: 100%;
   padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input_group button {
+  width: 100%;
+  padding: 10px;
+  background-color: #189ab4;
+  color: #fff;
   border: none;
-  border-radius: 3px;
-  background-color: #4caf50;
-  color: white;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.button-send:hover {
-  background-color: #45a049;
+.input_group button:hover {
+  background-color: #05445e;
+}
+
+.fallback button {
+  color: var(--clr-primary-700);
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.fallback button:hover {
+  text-decoration: underline;
 }

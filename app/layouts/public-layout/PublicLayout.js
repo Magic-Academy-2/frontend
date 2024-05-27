@@ -1,9 +1,9 @@
 export function PublicLayout({ mainHtml, mainContentLogic }) {
   const root = document.getElementById('root');
-  root.innerHTML = `
-    <main>
+  root.innerHTML = /* html */ `
+    <div id="public-layout">
       ${mainHtml}
-    </main>
+    </div>
   `;
   mainContentLogic();
 }
