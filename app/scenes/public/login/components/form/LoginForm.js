@@ -42,13 +42,13 @@ export function LoginForm() {
         return;
       }
 
-      const token = await login(email, password);
-      if (token) {
-        localStorage.setItem('token', token);
-        navigateTo('/home');
-      } else {
-        alert('Invalid credentials');
-      }
+      const loginResponse = await login(email, password);
+      if (!loginResponse) return alert('Invalid credentials');
+
+      const { token, user } = loginResponse;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      navigateTo('/home');
     });
   };
 
@@ -71,7 +71,7 @@ async function login(email, password) {
     }
 
     const data = await response.json();
-    return data.token;
+    return { token: data.token, user: data.user };
   } catch (error) {
     console.error('Login failed:', error);
     return null;
