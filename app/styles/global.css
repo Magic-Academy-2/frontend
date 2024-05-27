@@ -121,6 +121,13 @@ img {
   height: auto;
 }
 
+.container {
+  --_padding: var(--spacing-1);
+  --_max-width: var(--container-max-width, 1200px);
+  width: min(100% - var(--_padding) * 2, var(--_max-width));
+  margin-inline: auto;
+}
+
 .loader {
   color: yellow;
 }
