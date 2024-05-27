@@ -1,10 +1,10 @@
 export function DashboardLayout({ mainHtml, mainContentLogic }) {
   const root = document.getElementById('root');
 
-  root.innerHTML = `
-    <main>
+  root.innerHTML = /*html*/ `
+    <div>
       ${mainHtml}
-    </main>
+    </div>
   `;
 
   mainContentLogic();

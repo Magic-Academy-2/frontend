@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding-top: var(--spacing-4);
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container main {
+  display: grid;
+  place-content: center;
+  gap: var(--spacing-2);
+}
+
+.username {
+  color: var(--clr-primary-400);
+}
