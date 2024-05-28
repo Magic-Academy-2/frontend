@@ -57,8 +57,8 @@ export async function Router() {
     const { html, logic } = privateRoute.component({ searchParams });
     DashboardLayout({ mainHtml: html, mainContentLogic: logic });
   } else if (!publicRoute && !privateRoute) {
-    console.warn(`Ruta no encontrada: ${path}. Redirigiendo al /login`);
-    navigateTo('/login');
+    console.warn(`Ruta no encontrada: ${path}. Redirigiendo al /not-found`);
+    navigateTo('/not-found');
   } else {
     console.warn(`No existe token. Redirigiendo al /login`);
     navigateTo('/login');
