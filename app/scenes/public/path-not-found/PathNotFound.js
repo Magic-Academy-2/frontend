@@ -11,7 +11,7 @@ export function PathNotFoundScene() {
   const logic = () => {
     const $buttonGetBack = document.getElementById(`btn_getBack`);
     $buttonGetBack.addEventListener('click', () => {
-      navigateTo('/');
+      navigateTo('/login');
     });
   };
   return { html, logic };
