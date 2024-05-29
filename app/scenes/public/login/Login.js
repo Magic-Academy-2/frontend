@@ -1,5 +1,7 @@
 import logoBlack from '../../../assets/images/logo-black.png';
 
+import globalStyles from '../../../styles/global.css';
+import sharedAuthStyles from '../shared-auth-styles.css';
 import styles from './Login.css';
 import { LoginForm } from './components/form/LoginForm';
 
@@ -11,14 +13,13 @@ export function LoginScene({ searchParams }) {
       <header class="${styles.header}">
           <h1>¡Bienvenido!</h1>
       </header>
-      <main>
-          <section class="${styles.login_container}">
-            <div class="login_container">
-              <div id="${styles['img-logo']}">
-                  <img src="${logoBlack}" alt="Logo">
-              </div>
-              <h2>Iniciar Sesión</h2>
-              ${loginFormHtml}
+      <main class="${globalStyles.container}">
+          <section class="${sharedAuthStyles.form_container}">
+            <div id="${sharedAuthStyles.img_logo}">
+                <img src="${logoBlack}" alt="Logo">
+            </div>
+            <h2>Iniciar Sesión</h2>
+            ${loginFormHtml}
           </section>
       </main>
     </div>
