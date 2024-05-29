@@ -1,6 +1,5 @@
 import { USER_ROLES } from '../../../constants';
 import { getUserFromLocalStorage } from '../../../helpers';
-import { USER_ROLES } from '../../../constants';
 import globalStyles from '../../../styles/global.css';
 import styles from './Home.css';
 
