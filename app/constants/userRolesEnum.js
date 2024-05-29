@@ -1,9 +1,5 @@
-export function getUserRoles() {
-  const userRols = {
-    admin: 1,
-    student: 2,
-    instructor: 3,
-  };
-
-  return userRols;
-}
+export const USER_ROLES = Object.freeze({
+  ADMIN: 1,
+  STUDENT: 2,
+  INSTRUCTOR: 3,
+});

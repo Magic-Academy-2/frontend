@@ -1,6 +1,4 @@
-import { getUserRoles } from '../../../constants';
-import { logOut } from '../../../helpers/log-out';
-
+import { USER_ROLES } from '../../../constants';
 import globalStyles from '../../../styles/global.css';
 import styles from './Home.css';
 
@@ -13,23 +11,22 @@ export function HomeScene({ searchParams }) {
 
   console.log(user);
 
-  const userRoles = getUserRoles();
-  console.log(userRoles);
+  console.log(USER_ROLES);
 
   let logic;
   let html;
   // user.user_roles_id = 3; prueba
 
   switch (user.user_roles_id) {
-    case userRoles.admin:
+    case USER_ROLES.ADMIN:
       html = /*html*/ ``;
       logic = () => {};
       break;
-    case userRoles.student:
+    case USER_ROLES.STUDENT:
       html = /*html*/ ``;
       logic = () => {};
       break;
-    case userRoles.instructor:
+    case USER_ROLES.INSTRUCTOR:
       html = /*html*/ ``;
       logic = () => {};
       break;
