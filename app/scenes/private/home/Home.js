@@ -1,13 +1,12 @@
 import { USER_ROLES } from '../../../constants';
+import { getUserFromLocalStorage } from '../../../helpers';
+import { logOut } from '../../../helpers/log-out';
+
 import globalStyles from '../../../styles/global.css';
 import styles from './Home.css';
 
 export function HomeScene({ searchParams }) {
-  const userFromStorage = localStorage.getItem('user');
-  if (!userFromStorage) {
-    console.error('User not found in localStorage');
-  }
-  const user = JSON.parse(userFromStorage);
+  const user = getUserFromLocalStorage();
 
   console.log(user);
 
