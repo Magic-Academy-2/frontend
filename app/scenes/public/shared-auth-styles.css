@@ -1,0 +1,21 @@
+.form_container {
+  max-width: min(400px, 100%);
+  padding: var(--spacing-4);
+  background-color: #ffffff;
+  box-shadow: 0px 0px 15px 15px rgba(31, 14, 223, 0.1);
+  border: 1px solid var(--clr-primary-400);
+  border-radius: 10px;
+}
+
+/* Ajuste del tamaño del logo */
+#img_logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#img_logo img {
+  max-width: 300px; /* Ajusta este valor según el tamaño deseado */
+  width: 100%;
+  height: auto;
+}
