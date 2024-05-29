@@ -6,6 +6,7 @@ import HomeWhite from '../../assets/icons/home_white.png';
 import booksWhite from '../../assets/icons/books_white.png';
 import LogoRiwiWhite from '../../assets/images/logo_riwi_white.png';
 import LogoWhite from '../../assets/images/logo_white.png';
+import stylesGlobal from '../../styles/global.css';
 import styles from './DashboardLayout.css';
 import { logOut } from '../../helpers/log-out';
 export function DashboardLayout({ mainHtml, mainContentLogic }) {
@@ -77,8 +78,8 @@ export function DashboardLayout({ mainHtml, mainContentLogic }) {
         </ul>
       </aside>
       <!-- MAIN CONTENT OF THE PAGE RECEIVED  -->
-      <section>
-        <h1>hellooo${user.name}</h1>
+      <section class="${stylesGlobal.container}">
+        <h1>Bienvenido ${user.name}</h1>
         ${mainHtml}
       </section>
       <!-- MAIN CONTENT OF THE PAGE RECEIVED  -->
@@ -87,20 +88,18 @@ export function DashboardLayout({ mainHtml, mainContentLogic }) {
       <div id="${styles.footer_navs_container}" class="${styles.container}">
         <nav id="${styles.nav_footer}">
           <ul>
-            <li><a href="">Inicios</a></li>
-            <li><a href="">Quienes somos</a></li>
-            <li><a href="">Formar/te con nosotros</a></li>
-            <li><a href="">Quienes nos inspiran</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Nuestro equipo de trabajo</a></li>
           </ul>
         </nav>
 
-        <nav id="${styles.nav_politics}">
+        <!-- <nav id="${styles.nav_politics}">
           <ul>
             <li><a href="">Preferencias de Cookies</a></li>
             <li><a href="">Terminos</a></li>
             <li><a href="">Politica de privacidad</a></li>
           </ul>
-        </nav>
+        </nav> -->
 
         <nav id="${styles.nav_collaborators}">
           <h5>Colaboradores</h5>
@@ -145,20 +144,20 @@ export function DashboardLayout({ mainHtml, mainContentLogic }) {
   );
 
   $btnHamburguer.addEventListener('click', () => {
-    $sidebar.classList.add('show_menu_complete');
-    $btnHamburguer.classList.remove('show_element');
-    $btnClose.classList.add('show_element');
+    $sidebar.classList.add(styles.show_menu_complete);
+    $btnHamburguer.classList.remove(styles.show_element);
+    $btnClose.classList.add(styles.show_element);
     $headdressAside.forEach((element) => {
-      element.classList.add('full_opacity');
+      element.classList.add(styles.full_opacity);
     });
   });
 
   $btnClose.addEventListener('click', () => {
-    $sidebar.classList.remove('show_menu_complete');
-    $btnHamburguer.classList.add('show_element');
-    $btnClose.classList.remove('show_element');
+    $sidebar.classList.remove(styles.show_menu_complete);
+    $btnHamburguer.classList.add(styles.show_element);
+    $btnClose.classList.remove(styles.show_element);
     $headdressAside.forEach((element) => {
-      element.classList.remove('full_opacity');
+      element.classList.remove(styles.full_opacity);
     });
   });
 

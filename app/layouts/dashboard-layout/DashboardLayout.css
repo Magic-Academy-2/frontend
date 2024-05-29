@@ -58,15 +58,11 @@
   float: left;
 }
 
-#header > #nav_main > ul > li > a > div.img_profile {
+#header > #nav_main > ul > li > a > .img_profile {
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  background-image: url(./user_profile.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-color: black;
+  margin-right: var(--spacing-1);
 }
 
 #header #nav_main ul li a {
@@ -128,7 +124,7 @@ main > aside {
   left: 0px;
   overflow-x: hidden;
   background-color: var(--clr-primary-700);
-  padding: var(--space-2);
+  padding: var(--spacing-2);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: all 0.5s ease-in-out;
@@ -141,7 +137,7 @@ main > aside:hover,
 
 main > aside > ul > h5 {
   color: white;
-  margin: var(--space-1) 10px;
+  margin: var(--spacing-1);
   white-space: nowrap;
   font-weight: 600;
   opacity: 0;
@@ -154,7 +150,7 @@ main > aside:hover > ul > h5 {
 }
 
 main > aside > ul {
-  margin-top: 20px;
+  margin-top: var(--spacing-2);
   height: 80%;
   overflow-y: auto;
   scrollbar-width: none;
@@ -165,11 +161,12 @@ main > aside > ul > li > .item_link_aside {
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   gap: 15px;
-  padding: 15px 10px;
+  padding: 15px var(--spacing-1);
 }
 
 main > aside > ul > li > .item_link_aside > .link_icon > img {
   width: 25px;
+  max-width: 25px;
 }
 
 main > aside > ul > li > .item_link_aside > a {
@@ -190,7 +187,7 @@ main > aside > ul > li > .item_link_aside > a:hover {
 /* footer */
 
 #footer {
-  padding: var(--space-2);
+  padding: var(--spacing-2);
   background-color: var(--clr-body);
   color: white;
 }
@@ -205,7 +202,7 @@ main > aside > ul > li > .item_link_aside > a:hover {
 
 #footer > #footer_navs_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 #footer > div > nav > ul {
@@ -214,7 +211,7 @@ main > aside > ul > li > .item_link_aside > a:hover {
 }
 
 #footer > div > nav > ul > li {
-  padding: 3px;
+  padding: 5px;
 }
 
 #footer > div > #nav_collaborators > ul > li {
@@ -222,8 +219,8 @@ main > aside > ul > li > .item_link_aside > a:hover {
 }
 
 #footer > #footer_copyrigth {
-  margin-top: var(--space-2);
-  padding-top: var(--space-1);
+  margin-top: var(--spacing-2);
+  padding-top: var(--spacing-1);
   border-top: 1px solid white;
   display: flex;
   justify-content: space-between;
@@ -253,7 +250,7 @@ main > aside > ul > li > .item_link_aside > a:hover {
   }
 
   header > #logo-menu {
-    padding: var(--space-1);
+    padding: var(--spacing-1);
   }
 
   main > aside {
@@ -264,6 +261,6 @@ main > aside > ul > li > .item_link_aside > a:hover {
   #icon_hamburguer,
   #icon_close {
     width: 30px;
-    margin-left: 10px;
+    margin-left: var(--spacing-1);
   }
 }
