@@ -1,8 +1,7 @@
 import { USER_ROLES } from '../../../constants';
 import { getUserFromLocalStorage } from '../../../helpers';
-import { logOut } from '../../../helpers/log-out';
+import { getUserRoles } from '../../../constants';
 
-import globalStyles from '../../../styles/global.css';
 import styles from './Home.css';
 
 export function HomeScene({ searchParams }) {
