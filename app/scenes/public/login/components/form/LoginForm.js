@@ -16,6 +16,7 @@ export function LoginForm() {
       <div class="${styles.input_group}">
           <button type="submit">Iniciar sesión</button>
       </div>
+      <!-- TODO: Put this fallback in the login scene -->
       <div class="${styles.fallback}">
           <span>¿No estás registrado aún?</span>
           <button>Regístrate</button>
