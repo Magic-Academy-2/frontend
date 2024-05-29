@@ -79,7 +79,6 @@ export function DashboardLayout({ mainHtml, mainContentLogic }) {
       </aside>
       <!-- MAIN CONTENT OF THE PAGE RECEIVED  -->
       <section class="${stylesGlobal.container}">
-        <h1>Bienvenido ${user.name}</h1>
         ${mainHtml}
       </section>
       <!-- MAIN CONTENT OF THE PAGE RECEIVED  -->
