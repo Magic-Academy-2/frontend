@@ -1,11 +1,12 @@
 import { USER_ROLES } from '../../../constants';
 import { getUserFromLocalStorage } from '../../../helpers';
+import { logOut } from '../../../helpers/log-out';
+
 import globalStyles from '../../../styles/global.css';
 import styles from './Home.css';
 
 export function HomeScene({ searchParams }) {
   const user = getUserFromLocalStorage();
-
   console.log(user);
 
   console.log(USER_ROLES);
@@ -28,6 +29,7 @@ export function HomeScene({ searchParams }) {
       logic = () => {};
       break;
   }
+
 
   return {
     html,
